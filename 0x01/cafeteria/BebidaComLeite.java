@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BebidaComLeite extends BebidaDecorator{
-    public BebidaComLeite(Bebida bebidaDecorator) {
-        super(bebidaDecorator);
+    public BebidaComLeite(Bebida bebidaDecorada) {
+        super(bebidaDecorada);
     }
 
     @Override
