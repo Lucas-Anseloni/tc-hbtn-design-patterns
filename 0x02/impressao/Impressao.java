@@ -13,6 +13,9 @@ public class Impressao {
     private TamanhoImpressao tamanhoImpressao;
     private int paginasBrancoPreto;
 
+
+
+
     public Impressao(TamanhoImpressao tamanhoImpressao, int totalPaginas, int qtdColoridas, boolean freteVerso) {
         this.tamanhoImpressao = tamanhoImpressao;
         this.paginasTotais = totalPaginas;
@@ -20,6 +23,7 @@ public class Impressao {
         this.ehFrenteVerso = freteVerso;
         this.paginasBrancoPreto = totalPaginas - qtdColoridas;
     }
+
 
     public int getPaginasTotais() {
         return paginasTotais;
@@ -77,6 +81,8 @@ public class Impressao {
         this.valorPretoBrancoFrenteApenas = valorPretoBrancoFrenteApenas;
     }
 
+
+
     public Impressao(int paginasTotais, int paginasColoridas, boolean ehFrenteVerso, double valorColoridasFrenteVerso, double valorPretoBrancoFrenteVerso, double valorColoridasFrenteApenas, double valorPretoBrancoFrenteApenas) {
         this.paginasTotais = paginasTotais;
         this.paginasColoridas = paginasColoridas;
@@ -89,32 +95,33 @@ public class Impressao {
 
     public double calcularTotal() {
         if (tamanhoImpressao == TamanhoImpressao.A2 && ehFrenteVerso == false){
-            valorPretoBrancoFrenteApenas = 0.32;
-            valorColoridasFrenteApenas = 0.22;
+            valorPretoBrancoFrenteApenas = 0.22;
+            valorColoridasFrenteApenas = 0.32;
             valorTotal =  (paginasBrancoPreto*valorPretoBrancoFrenteApenas) + (paginasColoridas*valorColoridasFrenteApenas);
         }else if(tamanhoImpressao == TamanhoImpressao.A2 && ehFrenteVerso == true){
-            valorPretoBrancoFrenteVerso = 0.28;
-            valorColoridasFrenteVerso = 0.18;
+            valorPretoBrancoFrenteVerso = 0.18;
+            valorColoridasFrenteVerso = 0.28;
             valorTotal = (paginasBrancoPreto*valorPretoBrancoFrenteVerso) + (paginasColoridas*valorColoridasFrenteVerso);
         }else if(tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == false){
-            valorPretoBrancoFrenteApenas = 0.30;
-            valorColoridasFrenteApenas = 0.20;
+            valorPretoBrancoFrenteApenas = 0.20;
+            valorColoridasFrenteApenas = 0.30;
             valorTotal =  (paginasBrancoPreto*valorPretoBrancoFrenteApenas) + (paginasColoridas*valorColoridasFrenteApenas);
         }else if(tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == true){
-            valorPretoBrancoFrenteVerso = 0.25;
-            valorColoridasFrenteVerso = 0.15;
+            valorPretoBrancoFrenteVerso = 0.15;
+            valorColoridasFrenteVerso = 0.25;
             valorTotal = (paginasBrancoPreto*valorPretoBrancoFrenteVerso) + (paginasColoridas*valorColoridasFrenteVerso);
         }else if(tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == false) {
-            valorPretoBrancoFrenteApenas = 0.25;
-            valorColoridasFrenteApenas = 0.15;
+            valorPretoBrancoFrenteApenas = 0.15;
+            valorColoridasFrenteApenas = 0.25;
             valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteApenas) + (paginasColoridas * valorColoridasFrenteApenas);
         } else if(tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == true) {
-            valorPretoBrancoFrenteVerso = 0.20;
-            valorColoridasFrenteVerso = 0.10;
+            valorPretoBrancoFrenteVerso = 0.10;
+            valorColoridasFrenteVerso = 0.20;
             valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteVerso) + (paginasColoridas * valorColoridasFrenteVerso);
         }
         return valorTotal;
     }
+
 
     @Override
     public String toString() {
@@ -128,4 +135,5 @@ public class Impressao {
 
         return String.format("total de paginas: %d, total coloridas: %d, total preto e branco: %d, %s. total: R$ %.2f", getPaginasTotais(), getPaginasColoridas(), getPaginasTotais() - getPaginasColoridas(),frenteVerso,calcularTotal());
     }
+
 }
