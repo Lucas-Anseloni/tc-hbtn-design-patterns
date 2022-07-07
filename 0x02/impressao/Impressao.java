@@ -1,4 +1,4 @@
-
+package impressao;
 
 public class Impressao {
 
@@ -13,11 +13,11 @@ public class Impressao {
     private TamanhoImpressao tamanhoImpressao;
     private int paginasBrancoPreto;
 
-    public Impressao(TamanhoImpressao tamanhoImpressao,int totalPaginas,int qtdColoridas, boolean frenteVerso) {
+    public Impressao(TamanhoImpressao tamanhoImpressao, int totalPaginas, int qtdColoridas, boolean freteVerso) {
         this.tamanhoImpressao = tamanhoImpressao;
         this.paginasTotais = totalPaginas;
         this.paginasColoridas = qtdColoridas;
-        this.ehFrenteVerso = frenteVerso;
+        this.ehFrenteVerso = freteVerso;
         this.paginasBrancoPreto = totalPaginas - qtdColoridas;
     }
 
@@ -77,30 +77,6 @@ public class Impressao {
         this.valorPretoBrancoFrenteApenas = valorPretoBrancoFrenteApenas;
     }
 
-    public double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public TamanhoImpressao getTamanhoImpressao() {
-        return tamanhoImpressao;
-    }
-
-    public void setTamanhoImpressao(TamanhoImpressao tamanhoImpressao) {
-        this.tamanhoImpressao = tamanhoImpressao;
-    }
-
-    public int getPaginasBrancoPreto() {
-        return paginasBrancoPreto;
-    }
-
-    public void setPaginasBrancoPreto(int paginasBrancoPreto) {
-        this.paginasBrancoPreto = paginasBrancoPreto;
-    }
-
     public Impressao(int paginasTotais, int paginasColoridas, boolean ehFrenteVerso, double valorColoridasFrenteVerso, double valorPretoBrancoFrenteVerso, double valorColoridasFrenteApenas, double valorPretoBrancoFrenteApenas) {
         this.paginasTotais = paginasTotais;
         this.paginasColoridas = paginasColoridas;
@@ -111,28 +87,28 @@ public class Impressao {
         this.valorPretoBrancoFrenteApenas = valorPretoBrancoFrenteApenas;
     }
 
-    public double calcularTotal(){
+    public double calcularTotal() {
         if (tamanhoImpressao == TamanhoImpressao.A2 && ehFrenteVerso == false){
             valorPretoBrancoFrenteApenas = 0.32;
             valorColoridasFrenteApenas = 0.22;
-            valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteApenas) + (paginasColoridas * valorColoridasFrenteApenas);
-        } else if (tamanhoImpressao == TamanhoImpressao.A2 && ehFrenteVerso == true) {
+            valorTotal =  (paginasBrancoPreto*valorPretoBrancoFrenteApenas) + (paginasColoridas*valorColoridasFrenteApenas);
+        }else if(tamanhoImpressao == TamanhoImpressao.A2 && ehFrenteVerso == true){
             valorPretoBrancoFrenteVerso = 0.28;
             valorColoridasFrenteVerso = 0.18;
-            valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteVerso) + (paginasColoridas * valorColoridasFrenteVerso);
-        } else if (tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == false) {
+            valorTotal = (paginasBrancoPreto*valorPretoBrancoFrenteVerso) + (paginasColoridas*valorColoridasFrenteVerso);
+        }else if(tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == false){
             valorPretoBrancoFrenteApenas = 0.30;
             valorColoridasFrenteApenas = 0.20;
-            valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteApenas) + (paginasColoridas * valorColoridasFrenteApenas);
-        } else if (tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == true) {
+            valorTotal =  (paginasBrancoPreto*valorPretoBrancoFrenteApenas) + (paginasColoridas*valorColoridasFrenteApenas);
+        }else if(tamanhoImpressao == TamanhoImpressao.A3 && ehFrenteVerso == true){
             valorPretoBrancoFrenteVerso = 0.25;
             valorColoridasFrenteVerso = 0.15;
-            valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteVerso) + (paginasColoridas * valorColoridasFrenteVerso);
-        } else if (tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == false) {
+            valorTotal = (paginasBrancoPreto*valorPretoBrancoFrenteVerso) + (paginasColoridas*valorColoridasFrenteVerso);
+        }else if(tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == false) {
             valorPretoBrancoFrenteApenas = 0.25;
             valorColoridasFrenteApenas = 0.15;
             valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteApenas) + (paginasColoridas * valorColoridasFrenteApenas);
-        } else if (tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == true) {
+        } else if(tamanhoImpressao == TamanhoImpressao.A4 && ehFrenteVerso == true) {
             valorPretoBrancoFrenteVerso = 0.20;
             valorColoridasFrenteVerso = 0.10;
             valorTotal = (paginasBrancoPreto * valorPretoBrancoFrenteVerso) + (paginasColoridas * valorColoridasFrenteVerso);
@@ -142,12 +118,14 @@ public class Impressao {
 
     @Override
     public String toString() {
+
         String frenteVerso;
         if (ehFrenteVerso == true){
             frenteVerso = "frente e verso";
         }else {
             frenteVerso = "frente apenas";
         }
-        return String.format("total de paginas: %d, total coloridas: %d, total preto e branco: %d, %s. total: R$ %.2f",getPaginasTotais(),getPaginasColoridas(),getPaginasTotais() - getPaginasColoridas(),frenteVerso,calcularTotal());
+
+        return String.format("total de paginas: %d, total coloridas: %d, total preto e branco: %d, %s. total: R$ %.2f", getPaginasTotais(), getPaginasColoridas(), getPaginasTotais() - getPaginasColoridas(),frenteVerso,calcularTotal());
     }
 }
